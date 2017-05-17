@@ -1,0 +1,11 @@
+  <h2><%= @restaurant.name %></h2>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.phone_number %></p>
+  <p><%= @restaurant.category %></p>
+  <p>Rating first : <%= @restaurant.reviews.first.rating %> and created at : <%= @restaurant.reviews.first.created_at %></p>
+  <p>Rating last : <%= @restaurant.reviews.last.rating %> and created at : <%= @restaurant.reviews.last.created_at %></p>
+
+<% @restaurant.reviews.each do |review| %>
+    <h2><%= review.content %></h2>
+    <p><%= review.rating %></p>
+<% end %>
