@@ -10,10 +10,14 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @categories = YAML.load(File.read(File.expand_path('config/restaurant.yml', Rails.root)))['restaurant']['category']
   end
 
   def create
+    # params = restaurant_params.to_h
+    # params['category'] = params['category'].downcase
     @restaurant = Restaurant.new(restaurant_params)
+
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
